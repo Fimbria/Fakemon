@@ -35,9 +35,15 @@ public class StatModEffect extends Effect {
 						message += " harshly fell!";
 					else if(diff <= -3)
 						message += " severely fell!";
+<<<<<<< HEAD
 					if(mods[i] == -12)
 						message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " is minimized!";
 
+=======
+					
+					if(mods[i] == -12)
+					message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " " + " was minimized!";
+>>>>>>> upstream/master
 				}
 				else if(eff.mods[i] > 0)
 				{
@@ -49,8 +55,14 @@ public class StatModEffect extends Effect {
 						message += " rose sharply!";
 					else if(diff <= 3)
 						message += " rose drastically!";
+<<<<<<< HEAD
 					if(mods[i] == 12)
 						message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " is maximized!";
+=======
+					
+					if(mods[i] == 12)
+					message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " " + " was maximized!";
+>>>>>>> upstream/master
 				}
 				screen.displayMessage(message);
 			}
@@ -91,11 +103,10 @@ public class StatModEffect extends Effect {
 					message += " fell!";
 				else if(diff == -2)
 					message += " harshly fell!";
-				else if(diff == -12)
-					message += " was minimized!";
 				else if(diff <= -3)
 					message += " severely fell!";
-
+				if(mods[i] == -12)
+					message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " " + " was minimized!";
 			}
 			else if(diff > 0)
 			{
@@ -103,10 +114,10 @@ public class StatModEffect extends Effect {
 					message += " rose!";
 				else if(diff == 2)
 					message += " rose sharply!";
-				else if(diff == 12)
-					message += " was maximized!";
 				else if(diff <= 3)
 					message += " rose drastically!";
+				if(mods[i] == 12)
+					message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " " + " was maximized!";
 			}
 			screen.displayMessage(message);
 		}
