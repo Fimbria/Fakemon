@@ -1,4 +1,6 @@
-
+/*
+This move deals dark damage.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;

@@ -1,3 +1,7 @@
+/*
+The intent is for creatures to use this move when they have no PP in any other moves. When they use it, it deals some sort of damage, and the user takes 1/4 of damage dealt. It's unclear what else this move does.
+*/
+
 import fakemon.BattleScreen;
 import fakemon.MoveInfo;
 import fakemon.Pokemon;

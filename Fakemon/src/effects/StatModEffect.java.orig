@@ -4,13 +4,6 @@ import fakemon.Pokemon;
 import fakemon.Screen;
 import fakemon.Util;
 
-
-/*
- * This effect adds and tracks stat mod efefcts.
- * 
- * @param {int} type - An integer representing which stat is affected. Should range from 1 to 6. The static variables ATTACK, ACCURACY, and others correspond to those values.
- * @param {int} mod - the amount to change the effect by. 12 will raise the effect from minimum (-6), to maximum (6). -12 will go the opposite way.
- */
 public class StatModEffect extends Effect {
 	private int[] mods = new int[ACCURACY+1];
 	public StatModEffect(int type, int mod){
@@ -42,9 +35,15 @@ public class StatModEffect extends Effect {
 						message += " harshly fell!";
 					else if(diff <= -3)
 						message += " severely fell!";
+<<<<<<< HEAD
 					if(mods[i] == -12)
 						message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " is minimized!";
 
+=======
+					
+					if(mods[i] == -12)
+					message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " " + " was minimized!";
+>>>>>>> upstream/master
 				}
 				else if(eff.mods[i] > 0)
 				{
@@ -56,8 +55,14 @@ public class StatModEffect extends Effect {
 						message += " rose sharply!";
 					else if(diff <= 3)
 						message += " rose drastically!";
+<<<<<<< HEAD
 					if(mods[i] == 12)
 						message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " is maximized!";
+=======
+					
+					if(mods[i] == 12)
+					message += " " + Util.possessive(target.getName()) + " " + statNames[i] + " " + " was maximized!";
+>>>>>>> upstream/master
 				}
 				screen.displayMessage(message);
 			}
@@ -65,34 +70,23 @@ public class StatModEffect extends Effect {
 		}
 		return false;
 	}
-
-	// Effect ends at the end of battle.
 	public void onBattleEnd(){
 		end();
 	}
-
-	// Returns the amount by which to multiply the afflicted creature's stat.
-	// @param {int} type - the stat to modify.
 	public float getStatMod(int type){
-		if(type < ATTACK || type > ACCURACY) return 1; // checks for out-of-bounds errors
+		if(type < ATTACK || type > ACCURACY) return 1;
 		return getModPercent(type);
 	}
-
-	// Stat mods don't conflict with anything.
 	@Override
 	public boolean conflicts(Effect e,Screen screen) {
 		return false;
 	}
-
-	// Stat mods can triple or third type 5 (SPEED) or type 6 (ACCURACY). For all others, they can quadruple or quarter.
 	private float getModPercent(int type){
 		int i = mods[type];
 		if(type > 4)
 			return (float)Math.max(3, 3+i)/Math.max(3, 3-i);
 		return (float)Math.max(2, 2+i)/Math.max(2, 2-i);
 	}
-
-	// Gives a message for new applications of this effect.
 	public void onNewApply(Screen screen,Pokemon user, Pokemon target){
 		super.onNewApply(screen, user, target);
 		

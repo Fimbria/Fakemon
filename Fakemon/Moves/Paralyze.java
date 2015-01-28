@@ -1,3 +1,7 @@
+/*
+An eletric move that paralyzes the opponent without dealing damage.
+*/
+
 
 import effects.Effect;
 import effects.ParalyzeEffect;

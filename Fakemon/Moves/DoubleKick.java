@@ -1,3 +1,6 @@
+/*
+This move displays a special message, then attacks twice with fighting damage.
+*/
 
 import fakemon.BattleScreen;
 import fakemon.MoveInfo;

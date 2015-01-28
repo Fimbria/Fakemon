@@ -1,4 +1,9 @@
+/*
+When this hits, the user poisons itself, then maximizes its special defense. It might not hit because the move erroneously checks for accuracy.
 
+This will be the Signature move of Igaken.
+
+*/
 
 import effects.Effect;
 import effects.PoisonEffect;
@@ -19,7 +24,3 @@ public class Antibodies extends MoveInfo {
 		return true;	
 	}
 }
-
-//The user poisons itself, which maximizes its Special Defense.
-
-//This will be the Signature move of Igaken

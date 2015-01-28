@@ -1,4 +1,6 @@
-
+/*
+A water physical damage-dealing move with an unusual effect. The target loses 10% of its PP for all moves, and the display shows a message.
+*/
 
 import fakemon.BattleScreen;
 import fakemon.Move;

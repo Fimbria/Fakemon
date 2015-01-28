@@ -5,7 +5,18 @@ import java.util.HashSet;
 
 import effects.Effect;
 
-
+/*
+ * This is the superclass for all pokemon moves.
+ * 
+ * @param {string) name - The name of the move. Accepts any string.
+ * @param {int} basePP - The maximum number of times a move can be used before resting or recovering. Accepts any integer, but nonpositive integers will make the move unusable.
+ * @param {int} maxPP - The highest the player should be able to raise that maximum. Should be equal to or greater than basePP.
+ * @param {int} accuracy - The chance of hitting with a move. Accepts any integer, but values below 1 cannot possibly hit ever, no matter what accuracy-enhancers are in play. Values above 100 are more likely to hit when the user suffers from accuracy-reducing effects.
+ * @param {int} power - Affects the damage of a move. A value of 0 will deal no damage, while negative values will heal the target (but that may not be the preferred way to heal).
+ * @param {boolean} contact - Unknown. It may connect with moves such as Ignition, which check for whether a move "contacts" the target.
+ * @param {Category} cat - The category of the move, such as Category.PHYSICAL, Category.SPECIAL, or Category.STATUS. Affects many things, such as what stat is used for damage and resistance.
+ * @param {...Type} types - What type of move this is, such as Fighting, Psychic, or Flying. Affects many things, such as bonus damage and resistance.
+ */
 public abstract class MoveInfo {
 	private static HashSet<MoveInfo> moves = new HashSet<MoveInfo>();
 	private String name;

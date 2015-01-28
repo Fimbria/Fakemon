@@ -1,4 +1,13 @@
+/*
+Right now, this is a physical rock damage-dealing move.
 
+This will eventually be a Status move with a rather complicated effect. It has a three turn effect.
+Turn One: The opponent's speed is reduced by 1
+Turn Two: The opponent's speed is reduced by an additional 2
+Turn Three: The opponent's speed is reduced by an additional 3 and the type of the target becomes pure rock type.
+
+It is the signature move of Petrifly.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;
@@ -11,10 +20,3 @@ public class Petrification extends MoveInfo {
 
 }
 
-//This will eventually be a Status move with a rather complicated effect. It has a three turn effect.
-//Turn One: The opponent's speed is reduced by 1
-//Turn Two: The opponent's speed is reduced by an additional 2
-//Turn Three: The opponent's speed is reduced by an additional 3 and the type of the target becomes pure
-//rock type.
-
-//It is the signature move of Petrifly

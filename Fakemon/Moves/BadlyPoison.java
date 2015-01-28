@@ -1,3 +1,7 @@
+/*
+Applies a bad poison to the target.
+
+*/
 
 import effects.BadPoisonEffect;
 import effects.PoisonEffect;

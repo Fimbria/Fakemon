@@ -1,3 +1,6 @@
+/*
+Applies poison to the target.
+*/
 
 import effects.PoisonEffect;
 import fakemon.BattleScreen;

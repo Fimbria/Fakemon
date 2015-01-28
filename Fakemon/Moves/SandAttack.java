@@ -1,3 +1,7 @@
+/*
+Reduces the target's accuracy by 1 step.
+*/
+
 
 import effects.Effect;
 import effects.ParalyzeEffect;

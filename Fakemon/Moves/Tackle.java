@@ -1,4 +1,8 @@
+/*
+A physical normal damage-dealing move.
 
+.........tackle.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;
@@ -13,4 +17,3 @@ public class Tackle extends MoveInfo{
 }
 
 
-//.........tackle.

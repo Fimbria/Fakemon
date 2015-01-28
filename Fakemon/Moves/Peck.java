@@ -1,4 +1,8 @@
+/*
+A simple flying damage-dealing move.
 
+.....Peck.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;
@@ -11,4 +15,3 @@ public class Peck extends MoveInfo{
 	}
 }
 
-//.....Peck.

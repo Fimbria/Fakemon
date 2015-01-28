@@ -1,4 +1,10 @@
+/*
+A damage-dealing move. This move has four times the critical hit ratio.
 
+When completed, it will also have a 50% chance of raising the user's evasion by 1 stage.
+
+This will be the signature move of the grass starter.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;
@@ -15,8 +21,3 @@ public class AutumnStorm extends MoveInfo {
 		return 4.0f;
 	}
 }
-
-//Secondary Effect: 50% chance of raising users evasion by 1 stage
-//Secondary Effect: Has a high critical hit ratio
-
-//This will be the Signature move of the grass starter.

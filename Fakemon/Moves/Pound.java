@@ -1,4 +1,8 @@
+/*
+A straightforward, damage-dealing move of the normal type.
 
+...Pound.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;
@@ -11,4 +15,3 @@ public class Pound extends MoveInfo{
 }
 
 
-//...Pound.

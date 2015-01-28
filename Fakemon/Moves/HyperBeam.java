@@ -1,3 +1,8 @@
+/*
+A complex damage-dealing move. The goal is that it will take two turns to charge and fire.
+
+*/
+
 import fakemon.BattleAction;
 import fakemon.BattleScreen;
 import fakemon.MoveInfo;

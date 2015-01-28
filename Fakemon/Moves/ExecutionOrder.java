@@ -1,4 +1,6 @@
-
+/*
+A ghost-type physical damage-dealing move.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;

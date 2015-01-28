@@ -1,4 +1,10 @@
+/*
+Deals special bug damage.
 
+This move will have no secondary effect besides it is a high priority move (Priority = 1)
+
+It is the signature move of Mulmoryx.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;
@@ -12,6 +18,3 @@ public class SpeedyStinger extends MoveInfo {
 
 }
 
-//This move will have no secondary effect besides it is a high priority move (Priority = 1)
-
-//It is the signature move of Mulmoryx

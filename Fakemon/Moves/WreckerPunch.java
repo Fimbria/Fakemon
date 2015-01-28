@@ -1,4 +1,8 @@
+/*
+A physical fighting damage-dealing move.
 
+Not much PP, but hits harder.
+*/
 
 import fakemon.MoveInfo;
 import fakemon.Type;
