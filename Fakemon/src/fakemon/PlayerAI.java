@@ -1,3 +1,10 @@
+/* 
+ * This class allows players to control their creatures in combat.
+ * It creates a menu so the player can select a move.
+ * 
+ * 
+ */
+
 package fakemon;
 
 public class PlayerAI implements BattleAI{
@@ -11,6 +18,8 @@ public class PlayerAI implements BattleAI{
 		return box.getMove();
 	}*/
 	
+	// This lets the player select a second pokemon when one faints or retreats.
+	// This tells the game that players don't have a second pokemon.
 	@Override
 	public Pokemon getNextPokemon(BattleScreen battle) {
 		

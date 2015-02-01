@@ -1,3 +1,17 @@
+/*
+ * A complicated effect for modifying stats in combat.
+ * 
+ * This effect tracks bonus multipliers for all stats. Each multiplier
+ * has six steps up and six steps down, for a total of thirteen
+ * stages. At the extreme, six stages down will trisect accuracy,
+ * speed, or evasion, or quarter any of the rest. Six stages up will triple
+ * accuracy, speed, or evasion, or quadruple the rest.
+ * 
+ * The effect wears off after combat or when switching.
+ * 
+ * 
+ */
+
 package effects;
 
 import fakemon.Pokemon;

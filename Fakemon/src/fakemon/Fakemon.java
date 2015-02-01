@@ -1,3 +1,10 @@
+/*
+ * This method 
+ * 
+ * 
+ * 
+ */
+
 package fakemon;
 
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
@@ -23,26 +30,38 @@ public class Fakemon {
 			e.printStackTrace();
 		}
 	}
+
 	public void start() throws LWJGLException{
+
+		// There can be only one instance of Fakemon.
 		if(this.started) return;
 		started = true;
+
+		// Create a screen for the player to look at.
 		setCurrentScreen(new BlankScreen());
+
+		// Load all Pokemon.
 		PokemonInfo[] pokedex = PokemonInfo.getList();
 		System.out.println(pokedex.length + " Pokemon loaded.");
 		
+		// Load all moves.
 		MoveInfo[] moves = MoveInfo.getList();
 		System.out.println(moves.length + " Moves loaded.");
 		
+		// Create an object to represent the player.
+		// Players start with one random creature, which starts at level 10.
 		Trainer you = new Trainer("Player");
 		you.addPokemon(generatePokemon(10));
 		you.battleAI = new PlayerAI();
 		
+		// This looks like part of a set of commands that would start the player on the overworld.
 		//setCurrentScreen(new OverworldScreen(you));
 
 		//while(!currentScreen.isFinished());
 		
 		
-		
+		// This is the main logic of the game, which also happens to be the battle system.
+		// You face endless trainers in combat.
 		Trainer[] t = { you, null};
 		Trainer enemy;
 		
@@ -72,6 +91,9 @@ public class Fakemon {
 		}
 	}
 	
+	// Creates a random Pokemon, loaded with four random moves.
+	// This is the only method that creates new Pokemon.
+	// Takes one parameter, the starting level of the creature.
 	public static Pokemon generatePokemon(int level){
 		Random rand = new Random();
 
@@ -88,6 +110,7 @@ public class Fakemon {
 		return p;
 	}
 	
+	// This has to do with drawing the screen.
 	public void render(int delta){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear The Screen And The Depth Buffer
 
@@ -97,6 +120,7 @@ public class Fakemon {
 		}
 	}
 
+	// Direct mouse events to the current screen.
 	public void mouseEvent() {
 		if(currentScreen != null){
 			currentScreen.mouseEvent();

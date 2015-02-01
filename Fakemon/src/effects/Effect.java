@@ -1,3 +1,8 @@
+/* 
+ * This is the abstract for all effects.
+ * 
+ */
+
 package effects;
 
 import fakemon.BattleScreen;
@@ -17,15 +22,23 @@ public abstract class Effect {
 	public final static int EVASION = 6;
 	public final static int ACCURACY = 7;
 	public final static String[] statNames = {"Health","Attack","Defense","Special Attack","Special Defense","Speed","Evasion","Accuracy"};
+
+	// This will set to true when the effect should wear off.
+	// Interact with it using end() or isOver().
 	private boolean done;
+
 	// Executed when struck.
 	public void onDefend(){}
+
 	// Executed when striking.
 	public void onAttack(){}
+
 	// Executed when the battle ends.
 	public void onBattleEnd(){}
+
 	// Executed when a turn ends.
 	public void onTurnEnd(BattleScreen screen){}
+
 	// Returns whether a creature can act.
 	public boolean canAttack(Screen screen, Move m){
 		return true;
@@ -54,10 +67,13 @@ public abstract class Effect {
 	public boolean canSwap(BattleScreen screen){
 		return true;
 	}
+
 	// Executed when applying the effect to a creature afflicted with the same effect.
 	public abstract boolean add(Effect e,Screen screen);
+
 	// Returns true if the effect can't apply to the target due to an effect.
 	public abstract boolean conflicts(Effect e,Screen screen);
+
 	// Returns true if the effect can apply to the target due to its nature.
 	public boolean canBeApplied(Pokemon p,Screen screen)
 	{
