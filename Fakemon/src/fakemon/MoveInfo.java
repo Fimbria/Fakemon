@@ -55,11 +55,15 @@ public abstract class MoveInfo {
 	{
 		return name;
 	}
+	public void setName(String name){
+		this.name = name;
+	}
 	public static MoveInfo getByName(String name)
 	{
 		for(MoveInfo m : moves)
 			if(m.name.equalsIgnoreCase(name))
 				return m;
+		System.out.println("Move not found : " + name);
 		return null;
 
 	}

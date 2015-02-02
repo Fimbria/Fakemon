@@ -98,8 +98,16 @@ public abstract class Effect {
 		this.user = user;
 		this.target = target;
 	}
+<<<<<<< HEAD
 
 	// Intended for override. Returns the amount to multiply the afflicted creature's damage.
+=======
+	/**
+	 * 
+	 * 
+	 * @return The percent modifier for damage done.
+	 */
+>>>>>>> master
 	public float getDamMod(){
 		return 1;
 	}

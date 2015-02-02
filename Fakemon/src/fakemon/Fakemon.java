@@ -1,10 +1,3 @@
-/*
- * This method 
- * 
- * 
- * 
- */
-
 package fakemon;
 
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
@@ -12,14 +5,16 @@ import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.glClear;
 
 import java.awt.Font;
+import java.util.ArrayList;
 import java.util.Random;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.TrueTypeFont;
 
 
 public class Fakemon {
-	private static Screen currentScreen;
+	private static ArrayList<Screen> screenStack;
 	static TrueTypeFont font;
 	static TrueTypeFont smallFont;
 	private boolean started;
@@ -36,58 +31,18 @@ public class Fakemon {
 		// There can be only one instance of Fakemon.
 		if(this.started) return;
 		started = true;
-
-		// Create a screen for the player to look at.
-		setCurrentScreen(new BlankScreen());
-
-		// Load all Pokemon.
-		PokemonInfo[] pokedex = PokemonInfo.getList();
-		System.out.println(pokedex.length + " Pokemon loaded.");
-		
-		// Load all moves.
-		MoveInfo[] moves = MoveInfo.getList();
-		System.out.println(moves.length + " Moves loaded.");
-		
-		// Create an object to represent the player.
-		// Players start with one random creature, which starts at level 10.
-		Trainer you = new Trainer("Player");
-		you.addPokemon(generatePokemon(10));
-		you.battleAI = new PlayerAI();
-		
-		// This looks like part of a set of commands that would start the player on the overworld.
-		//setCurrentScreen(new OverworldScreen(you));
-
-		//while(!currentScreen.isFinished());
-		
-		
-		// This is the main logic of the game, which also happens to be the battle system.
-		// You face endless trainers in combat.
-		Trainer[] t = { you, null};
-		Trainer enemy;
-		
-		int[] is = { 1 , 1 };
-		int win = 1;
-		
-		while(true){
-			if(win != 0)
-				you.getPokemon()[0].fullHeal();
-			enemy = new Trainer("Opponent");
-			enemy.addPokemon(generatePokemon(10));
-			enemy.addPokemon(generatePokemon(10));
-
-			t[1] = enemy ;
-			BattleScreen s = new BattleScreen(t, false, is);
-			FadeTransitionScreen ts = new FadeTransitionScreen(s);
-			setCurrentScreen(ts);
-			while(!s.isFinished())
-			{
+		pushScreen(new BlankScreen());
+		pushScreen(new MainMenuScreen());
+	//	pushScreen(new OverworldScreen(null));
+		while(true)
+		{
+			if(getCurrentScreen() != null)
 				getCurrentScreen().doLogic();
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-			win = s.getWinner();
-
-
-			
-			
 		}
 	}
 	
@@ -98,32 +53,24 @@ public class Fakemon {
 		Random rand = new Random();
 
 		PokemonInfo[] pokedex = PokemonInfo.getList();
-		MoveInfo[] moves = MoveInfo.getList();
 		PokemonInfo s = pokedex[rand.nextInt(pokedex.length)];
 		Pokemon p = new Pokemon(s.name, s, s.levelingType.getExperience(level), level, false, -1);
-		p.addMove(new Move(moves[rand.nextInt(moves.length)]));
-		p.addMove(new Move(moves[rand.nextInt(moves.length)]));
-		p.addMove(new Move(moves[rand.nextInt(moves.length)]));
-		p.addMove(new Move(moves[rand.nextInt(moves.length)]));
-		//p.addMove(new Move(MoveInfo.getByName("Antibodies")));
-
 		return p;
 	}
 	
-	// This has to do with drawing the screen.
 	public void render(int delta){
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear The Screen And The Depth Buffer
 
-		if(currentScreen != null){
-			
-			currentScreen.render(delta);
+		if(getCurrentScreen() != null){
+
+			getCurrentScreen().renderScreen(delta);
 		}
 	}
 
 	// Direct mouse events to the current screen.
 	public void mouseEvent() {
-		if(currentScreen != null){
-			currentScreen.mouseEvent();
+		if(getCurrentScreen() != null){
+			getCurrentScreen().mouseEvent();
 		}
 	}
 
@@ -135,13 +82,31 @@ public class Fakemon {
 		
 		Font awtFont2 = new Font("Times New Roman", Font.BOLD, 12); // name, style (PLAIN, BOLD, or ITALIC), size
 		smallFont = new TrueTypeFont(awtFont2, true);
+		
+		screenStack = new ArrayList<Screen>();
 	}
 
 	public static Screen getCurrentScreen() {
-		return currentScreen;
+		return screenStack.get(screenStack.size()-1);
 	}
 
-	public static void setCurrentScreen(Screen screen) {
-		currentScreen = screen;
+	/*public static void setCurrentScreen(Screen screen) {
+		screenStack.set(screenStack.size()-1,screen);
+	}*/
+	public static void pushScreen(Screen screen){
+		screenStack.add(screen);
+	}
+	public static void popScreen(){
+		screenStack.remove(screenStack.size()-1);
+	}
+	public static Screen peek(int rIndex){
+		return screenStack.get(screenStack.size()-1 + rIndex);
+	}
+	public static void printScreenStack(){
+		String s = "";
+		for(Screen sc : screenStack){
+			s += sc.getClass().getSimpleName() + " ";
+		}
+		System.out.println(s);
 	}
 }
